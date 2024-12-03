@@ -23,6 +23,7 @@ func parseInput(inputFile string) [][]int {
 	if err != nil {
 		log.Fatalf("Error when reading file: %v", err)
 	}
+	defer file.Close()
 
 	scanner := bufio.NewScanner(file)
 
