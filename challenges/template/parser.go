@@ -11,7 +11,7 @@ import (
 func parseInput(inputFile string) []string {
 	_, currentPath, _, ok := runtime.Caller(1)
 	if !ok {
-		log.Fatalf("Error getting current path")
+		log.Fatal("Error getting current path")
 	}
 
 	currentDir := filepath.Dir(currentPath)
