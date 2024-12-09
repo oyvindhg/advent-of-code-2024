@@ -1,0 +1,27 @@
+package main
+
+import (
+	"log"
+	"os"
+	"path/filepath"
+	"runtime"
+)
+
+func parseInput(inputFile string) []rune {
+	_, currentPath, _, ok := runtime.Caller(1)
+	if !ok {
+		log.Fatal("Error getting current path")
+	}
+
+	currentDir := filepath.Dir(currentPath)
+	inputFilePath := filepath.Join(currentDir, inputFile)
+
+	data, err := os.ReadFile(inputFilePath)
+	if err != nil {
+		log.Fatalf("Error during file parsing: %v", err)
+	}
+
+	diskmap := []rune(string(data))
+
+	return diskmap
+}
